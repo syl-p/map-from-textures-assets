@@ -1,4 +1,4 @@
-import { GizmoHelper, GizmoViewport, OrbitControls, } from "@react-three/drei"
+import { GizmoHelper, GizmoViewport, OrbitControls, Sky, } from "@react-three/drei"
 import * as THREE from "three"
 import Terrain from "./Terrain"
 import { useState } from "react"
@@ -7,7 +7,14 @@ import Spawner from "./Spawner"
 function Experience() {
     return <>
         <OrbitControls />
-        <directionalLight position={[10, 30, 30]}/>
+        <Sky />
+        <directionalLight               
+                intensity={1.65}
+              castShadow
+              position={[-15, 30, 15]}
+              shadow-mapSize-width={2048}
+              shadow-mapSize-height={2048}
+              shadow-bias={-0.00005} />
         <ambientLight />
         <Terrain/>
 
