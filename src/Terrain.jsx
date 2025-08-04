@@ -100,10 +100,13 @@ export default function Terrain() {
       instances={instancedMeshRef}
       count={200}
       weight="redMask"
-
-        transform={({ position, normal, dummy })  => {
+        transform={({ position, dummy})  => {
           dummy.position.copy(position)
           dummy.rotation.x = -Math.PI / 2
+
+          dummy.rotation.y = Math.random() * Math.PI 
+          dummy.scale.setScalar(0.5 + Math.random() * 1.2)
+
           dummy.updateMatrix()
         }}
     />
