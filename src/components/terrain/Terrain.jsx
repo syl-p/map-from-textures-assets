@@ -2,14 +2,12 @@ import { Sampler } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber'
 import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
-import terrainMaterial from './TerrainMaterial'
+import TerrainMaterial from './TerrainMaterial'
 
 export default function Terrain() {
   const meshRef = useRef()
   const instancedMeshRef = useRef()
   const [geometry, setGeometry] = useState(null)
-  
-
   const heightmap = useLoader(THREE.TextureLoader, '/dem.jpg')
   const splatmap = useLoader(THREE.TextureLoader, '/splatmap.png')
 
@@ -17,8 +15,8 @@ export default function Terrain() {
     const img = heightmap.image
     const splatImg = splatmap.image
 
-    const RES = 264
-    const HEIGHT_SCALE = 50
+    const RES = 128
+    const HEIGHT_SCALE = 25
 
     // Canvas pour heightmap
     const heightCanvas = document.createElement('canvas')
@@ -89,9 +87,8 @@ export default function Terrain() {
       rotation-x={-Math.PI / 2}
       receiveShadow
       castShadow
-      material={terrainMaterial}
     >
-      {/* <meshStandardMaterial map={splatmap} castShadow receiveShadow/> */}
+      <TerrainMaterial />
     </mesh>
 
     {/** Sampler qui va échantillonner en fonction de redMask */}

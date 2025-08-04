@@ -1,8 +1,6 @@
 import { GizmoHelper, GizmoViewport, OrbitControls, Sky, } from "@react-three/drei"
-import * as THREE from "three"
-import Terrain from "./Terrain"
-import { useState } from "react"
-import Spawner from "./Spawner"
+import Terrain from "./components/terrain/Terrain"
+import Water from "./components/water/Water"
 
 function Experience() {
     return <>
@@ -16,7 +14,9 @@ function Experience() {
               shadow-mapSize-height={2048}
               shadow-bias={-0.00005} />
         <ambientLight />
+
         <Terrain/>
+        <Water />
 
         <GizmoHelper
             alignment="bottom-right" // widget alignment within scene
